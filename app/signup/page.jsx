@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import  Link  from "next/link"
 import { useRouter } from "next/navigation"
@@ -36,8 +37,18 @@ const SignUp = () => {
   }
 
   return (
-    <div>
-        <Card>
+    <div className="flex justify-center items-center fixed w-full min-h-screen bg-gray-100">
+        <div className="left h-screen relative w-[50%] overflow-hidden">
+          <Image
+            src="/sideimg.png" // <-- your image name here (in /public)
+            alt="Signup illustration"
+            fill  // makes it cover the whole div
+            className="object-cover"
+            priority
+        />
+        </div>
+        <div className="right h-full w-[50%] flex justify-center items-center">
+          <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>Sign Up</CardTitle>
             <CardDescription>create one katheti account to shop well</CardDescription>
@@ -47,10 +58,14 @@ const SignUp = () => {
                 <Input placeholder="john" id="username" type="text"  {...register("username", { required: "username is required" })}></Input>
                 <Input placeholder="you@example.com" id="email" type="email"  {...register("email", { required: "Email is required" })}></Input>
                 <Input placeholder="*****" id="password" type="password"  {...register("password", { required: "password is required" })}></Input>
-                <Button variant="primary">sign up</Button>
+                <Button variant="secondary" className="bg-blue-900 text-white hover:bg-blue-950">sign up</Button>
             </CardContent>
+            <CardFooter className="text-center mt-5 ml-20">
+              <p>already have an account? <Link href="/login" className="text-blue-700 hover:underline">login</Link></p>
+            </CardFooter>
           </form>
         </Card>
+        </div>
     </div>
   )
 }

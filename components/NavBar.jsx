@@ -1,13 +1,17 @@
 'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { Search } from "lucide-react"
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 
 const NavBar = () => {
+  // const [isLogin,setIsLogin] = useState(false);
+  // const email = localStorage.getItem("email");
+  // if(email)setIsLogin(true);
+  
   return (
-    <div className='flex h-14 gap-15 w-full bg-[#3C467B] p-1'>
+    <div className='flex h-14 gap-15 w-full bg-[#3C467B] shadow-lg p-1'>
       {/* logo */}
       <div className='h-full w-[20%] flex justify-start pl-2 items-center'>
             <Link href="/"><p className='font-bold cursor-pointer text-2xl text-white'>katheti</p></Link>

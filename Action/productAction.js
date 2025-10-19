@@ -3,16 +3,19 @@ import { connectDB } from "@/Utils/mongooseconnect.js";
 import Product from "@/Schema/productSchema.js"
 import { parseJSON } from "@/Utils/parse";
 
-export const productAdd = async(data) => {
+export const getAllProductAction = async() => {
     try{
         await connectDB();
-        console.log("connected with DB");
-        await Product.deleteMany();
-        console.log("Old data deleted");
-        const newProduct = await Product.insertMany(data);
-        console.log("all data inserted");
-        return {"msg" : "added"}
+        console.log("connected with db");
+        const allData = await Product.find({}).lean();
+        // const plainProducts = allData.map((p) => ({
+        //     ...p,
+        //     _id : p._id.toString(),
+        // }))
+        // console.log(plainProducts.length);
+        
+        return parseJSON(allData);
     }catch(err){
-       throw new Error("Internal server error");
+        throw err;
     }
 }

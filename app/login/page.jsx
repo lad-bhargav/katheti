@@ -29,8 +29,9 @@ const Login = () => {
 
   const onSubmitFcn = async(data) => {
       try{
-          await loginAction(data);
+          const user = await loginAction(data);
           localStorage.setItem("email",data.email);
+          localStorage.setItem("userId",user._id);
           router.replace("/");
       }catch(err){
         setError(err.message);

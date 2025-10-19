@@ -22,8 +22,19 @@ export const loginAction = async(user) => {
         const checkUser = await Auth.findOne({"email" : user.email});
         if(!checkUser)throw new Error("signup first");
         else if(user.password != checkUser.password) throw new Error("invalid password");
-        return {"msg" : "login done"};
+        return parseJSON(checkUser);
     }catch(err){
         throw new Error("Internal server error");
+    }
+}
+
+export const getUserAction = async(id) => {
+    try{
+        await connectDB();
+        const user = await Auth.findById(id);
+        if(!user)throw new Error("id does not exist in DB");
+        return parseJSON(user);
+    }catch(err){
+        throw new Error("internal server error");
     }
 }

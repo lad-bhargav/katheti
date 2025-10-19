@@ -1,4 +1,4 @@
-
+'use server'
 import { connectDB } from "@/Utils/mongooseconnect";
 import Auth from "@/Schema/authSchema.js";
 import { parseJSON } from "@/Utils/parse";

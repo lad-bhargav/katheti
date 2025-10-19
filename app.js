@@ -1,5 +1,6 @@
-import Product from "./Schema/productSchema.js";
-import { connectDB } from "./Utils/mongooseconnect.js";
+import { productAdd } from "./Action/productAction.js";
+// import Product from "./Schema/productSchema.js";
+// import { connectDB } from "./Utils/mongooseconnect.js";
 
 const AllData = [
   {
@@ -146,17 +147,7 @@ const AllData = [
 
 (async () => {
   try {
-    await connectDB();
-    console.log("Connected to DB");
-
-    await Product.deleteMany();
-    console.log("Old data deleted");
-
-    for (const product of AllData) {
-      await Product.create(product);
-      console.log(`${product.title} added`);
-    }
-
+    await productAdd(AllData);
     console.log("All products added successfully");
     process.exit(0);
   } catch (err) {

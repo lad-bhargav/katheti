@@ -26,7 +26,7 @@ const NavBar = () => {
 
   
   return (
-    <div className='flex h-14 gap-15 w-full bg-[#3C467B] p-1'>
+    <div className='flex h-14 fixed gap-15 w-full bg-[#263377] p-1 z-50'>
       {/* logo */}
       <div className='h-full w-[20%] flex justify-start pl-2 items-center'>
             <Link href="/"><p className='font-bold cursor-pointer text-2xl text-white'>katheti</p></Link>
@@ -41,7 +41,7 @@ const NavBar = () => {
       </div>
       {/* login signup */}
       <div className='gap-8 h-full w-[40%] flex justify-end pr-3 items-center'>
-        {isLogin?<p className='text-transparent text-2xl font-semibold cursor-pointer bg-clip-text bg-gradient-to-l from-blue-700 to-pink-600'>{username}</p>:<><Link href="/signup"><Button variant="secondary">Sign up</Button></Link>
+        {isLogin?<Link href="/profile"><p className='text-transparent text-2xl font-semibold cursor-pointer bg-clip-text bg-gradient-to-l from-blue-700 to-pink-600'>{username}</p></Link>:<><Link href="/signup"><Button variant="secondary">Sign up</Button></Link>
         <Link href="/login"><Button variant="secondary">login</Button></Link></>}
       </div>
     </div>

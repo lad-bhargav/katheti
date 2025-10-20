@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-    domains: ['fakestoreapi.com'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',  // wildcard for all domains
+      },
+      {
+        protocol: 'http',
+        hostname: '**',  // optional, if you also want to allow http
+      },
+    ],
   },
 };
 

@@ -38,3 +38,14 @@ export const getUserAction = async(id) => {
         throw new Error("internal server error");
     }
 }
+
+export const editProfileAction = async(id,newData) => {
+    try{
+        await connectDB();
+        const edituser = await Auth.findByIdAndUpdate(id,newData,{ new: true });
+        console.log(parseJSON(edituser));
+        
+    }catch(err){
+        throw new Error("internal server error");
+    }
+}
